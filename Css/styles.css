@@ -1,0 +1,296 @@
+/* Estilos generales */
+:root {
+    --color-black: #000;
+    --color-white: #fff;
+    --color-red: #e60000;
+    --font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    color: var(--color-black);
+    background-color: var(--color-white);
+    scroll-behavior: smooth; /* Scroll suave */
+}
+
+/* Navbar fijo y centrado correctamente */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px; /* altura estándar */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  z-index: 1000;
+}
+
+/* Contenedor para centrar el menú */
+.navbar-menu {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* 👈 centra los enlaces horizontalmente */
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Logo a la izquierda */
+.navbar-logo img {
+  height: 50px;
+}
+
+/* Enlaces del menú */
+.navbar-menu a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-menu a:hover {
+  color: var(--color-red);
+}
+
+/* Botón a la derecha */
+.navbar-button {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  margin-right: 60px;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-button:hover {
+  background-color: #cc0000;
+  transform: scale(1.05);
+}
+
+
+.navbar-toggle {
+    display: none; /* Oculto por defecto, para mobile */
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+/* Imagen Hero*/
+.hero-button-container {
+  position: relative;
+  display: inline-block;
+}
+
+.button-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 506%; /* aumenta este valor si quieres que se vea más grande */
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  border-radius: 15px;
+  opacity: 0.8;
+  object-fit: cover;
+  pointer-events: none; /* evita que bloquee los clics */
+  transition: transform 0.3s ease;
+}
+
+
+.hero-button {
+  position: relative;
+  z-index: 1;
+  background-color: #e60000;
+  color: #fff;
+  margin-bottom: 50%;
+  font-size: 1.2rem;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+}   
+
+/* Sección Hero */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-white);
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('hero-background.jpg') no-repeat center center/cover; /* Reemplaza con tu imagen */
+    filter: brightness(0.5); /* Efecto oscuro para legibilidad */
+    z-index: -1;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    animation: fadeIn 1s ease-in; /* Animación de entrada */
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+}
+
+.hero-button {
+    background-color: var(--color-red);
+    color: var(--color-white);
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.hero-button:hover {
+    transform: scale(1.1); /* Efecto hover */
+}
+
+/* Secciones comunes */
+section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Servicios con Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.service-card {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px); /* Efecto hover */
+}
+
+.service-icon {
+    font-size: 2rem;
+    color: var(--color-red);
+}
+
+/* Productos con Grid y efecto hover */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.product-card {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+}
+
+.product-card:hover {
+    box-shadow: 0 0 10px var(--color-red); /* Efecto hover */
+}
+
+/* Formulario Agenda */
+.agenda form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.agenda input, .agenda select {
+    padding: 0.5rem;
+    border: 1px solid var(--color-black);
+    border-radius: 5px;
+}
+
+/* Contacto */
+.contact {
+    background-color: #f4f4f4;
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 1rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo {
+    height: 40px;
+}
+
+/* Animaciones CSS */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none; /* Oculta el menú en mobile */
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--color-black);
+    }
+
+    .navbar-menu.active {
+        display: flex; /* Muestra al activar */
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+}

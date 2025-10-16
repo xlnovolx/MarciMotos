@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Motos - Potencia tu Moto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Css/styles.css">
+</head>
+
+<body>
+    <!-- Encabezado con Navbar fijo -->
+    <header>
+        <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="logo.png" alt="Logo del Taller de Motos">
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#agenda">Agenda tu cita</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <button class="navbar-button">Agendar Cita</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección Hero -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+            <h1>Potencia tu moto con los mejores expertos</h1>
+            <p>Descubre servicios de alta calidad para mantener tu moto en óptimas condiciones. ¡Velocidad y precisión garantizadas!</p>
+
+            <div class="hero-button-container">
+                <img src="img/pexels-frans-van-heerden-201846-1022704.jpg" alt="Fondo del botón" class="button-bg">
+                <button class="hero-button">Agenda tu cita ahora</button>
+            </div>
+            </div>
+
+            <!-- Imagen de fondo (reemplaza con tu imagen o video) -->
+            <div class="hero-background"></div>
+        </section>
+
+        <!-- Sección Servicios -->
+        <section id="servicios" class="services">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="service-icon">&#x2699;</i> <!-- Icono simple, puedes reemplazar con imágenes -->
+                    <h3>Mantenimiento General</h3>
+                    <p>Revisión completa de frenos, neumáticos y motor para asegurar un rendimiento óptimo.</p>
+                </div>
+                <div class="service-card">
+                    <i class="service-icon">&#x1F527;</i>
+                    <h3>Cambio de Aceite</h3>
+                    <p>Cambio de aceite y filtros con productos de alta calidad para prolongar la vida de tu motor.</p>
+                </div>
+                <div class="service-card">
+                    <i class="service-icon">&#x26A1;</i>
+                    <h3>Reparaciones Eléctricas</h3>
+                    <p>Diagnóstico y reparación de sistemas eléctricos, luces y encendido.</p>
+                </div>
+                <div class="service-card">
+                    <i class="service-icon">&#x1F3CD;</i>
+                    <h3>Personalización</h3>
+                    <p>Modificaciones estéticas y de rendimiento para hacer tu moto única.</p>
+                </div>
+                <div class="service-card">
+                    <i class="service-icon">&#x1F4B0;</i>
+                    <h3>Venta de Refacciones</h3>
+                    <p>Amplia selección de piezas originales y de repuesto al mejor precio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Productos -->
+        <section id="productos" class="products">
+            <h2>Nuestros Productos</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="product1.jpg" alt="Casco Deportivo"> <!-- Reemplaza con imágenes reales -->
+                    <h3>Casco Deportivo</h3>
+                    <p>Precio: $150</p>
+                </div>
+                <div class="product-card">
+                    <img src="product2.jpg" alt="Neumáticos Todo Terreno">
+                    <h3>Neumáticos Todo Terreno</h3>
+                    <p>Precio: $200</p>
+                </div>
+                <div class="product-card">
+                    <img src="product3.jpg" alt="Kit de Filtros">
+                    <h3>Kit de Filtros</h3>
+                    <p>Precio: $50</p>
+                </div>
+                <!-- Agrega más productos según necesites -->
+            </div>
+        </section>
+
+        <!-- Sección Agenda tu cita -->
+        <section id="agenda" class="agenda">
+            <h2>Agenda tu Cita</h2>
+            <form id="appointment-form">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" required>
+                
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" required>
+                
+                <label for="service">Tipo de Servicio:</label>
+                <select id="service" required>
+                    <option value="">Selecciona un servicio</option>
+                    <option value="mantenimiento">Mantenimiento General</option>
+                    <option value="aceite">Cambio de Aceite</option>
+                    <option value="electrico">Reparaciones Eléctricas</option>
+                    <option value="personalizacion">Personalización</option>
+                    <option value="refacciones">Venta de Refacciones</option>
+                </select>
+                
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" required>
+                
+                <label for="time">Hora:</label>
+                <input type="time" id="time" required>
+                
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto" class="contact">
+            <h2>Contacto</h2>
+            <p><strong>Dirección:</strong> Calle Moto 123, Ciudad, País</p>
+            <p><strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00</p>
+            <p><strong>Teléfono:</strong> +123 456 789</p>
+            <p><strong>Redes Sociales:</strong> 
+                <a href="#">Facebook</a> | 
+                <a href="#">Instagram</a> | 
+                <a href="https://wa.me/123456789">WhatsApp</a>
+            </p>
+            <!-- Mapa de Google embebido (reemplaza con tu URL) -->
+            <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="logo.png" alt="Logo del Taller" class="footer-logo"> <!-- Logo en el footer -->
+            <p>&copy; 2023 Taller de Motos. Todos los derechos reservados.</p>
+            <p>Correo: info@tallerdemotos.com</p>
+            <div class="footer-social">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="https://wa.me/123456789">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Js/script.js"></script>
+</body>
+</html>
