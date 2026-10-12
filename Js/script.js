@@ -3,7 +3,10 @@ const BUSINESS_ADDRESS = 'Calle 49 con Carrera 15, Colombia';
 const OPENING_HOUR = 9;
 const WEEKDAY_LAST_START_HOUR = 17;
 const SATURDAY_LAST_START_HOUR = 14;
-const APPOINTMENT_API = '/api/appointments';
+const configuredApiUrl = document.querySelector('meta[name="marci-api-url"]')?.content.trim();
+const APPOINTMENT_API = configuredApiUrl
+    ? `${configuredApiUrl.replace(/\/$/, '')}/api/appointments`
+    : '/api/appointments';
 
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
@@ -109,17 +112,20 @@ async function loadMonth() {
 
     try {
         const response = await fetch(`${APPOINTMENT_API}?month=${monthKey}`, { cache: 'no-store' });
-        if (!response.ok) throw new Error('No se pudo consultar la disponibilidad.');
+        if (!response.headers.get('content-type')?.includes('application/json')) {
+            throw new Error('Este enlace está publicado como sitio estático y no encuentra la API de turnos. Publica el servidor de agenda y configura su URL en el meta marci-api-url de index.html.');
+        }
+        if (!response.ok) throw new Error('No se pudo consultar la agenda del servidor.');
         const appointments = await response.json();
         if (requestId !== monthRequestId) return;
         occupiedSlots = new Set(appointments.map(({ date, time }) => `${date}T${time}`));
         renderCalendar();
-    } catch {
+    } catch (error) {
         if (requestId === monthRequestId) {
-            const error = document.createElement('p');
-            error.className = 'calendar-error';
-            error.textContent = 'No se pudo cargar la agenda. Comprueba que el servidor esté activo.';
-            calendarDays.replaceChildren(error);
+            const errorMessage = document.createElement('p');
+            errorMessage.className = 'calendar-error';
+            errorMessage.textContent = error.message || 'No se pudo cargar la agenda. Comprueba la conexión con el servidor de turnos.';
+            calendarDays.replaceChildren(errorMessage);
         }
     }
 }
