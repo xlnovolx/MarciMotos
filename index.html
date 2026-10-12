@@ -1,163 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taller de Motos - Potencia tu Moto</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#171916">
+    <meta name="description" content="Mantenimiento, diagnóstico y reparación de motos. Consulta disponibilidad y reserva tu turno.">
+    <title>Marci Motos | Taller especializado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Css/styles.css">
 </head>
-
 <body>
-    <!-- Encabezado con Navbar fijo -->
-    <header>
-        <nav class="navbar">
-        <div class="navbar-logo">
-            <img src="logo.png" alt="Logo del Taller de Motos">
-        </div>
-        <ul class="navbar-menu">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#productos">Productos</a></li>
-            <li><a href="#agenda">Agenda tu cita</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-        <button class="navbar-button">Agendar Cita</button>
+    <header class="site-header">
+        <a class="brand" href="#inicio" aria-label="Marci Motos, inicio">
+            <span class="brand-mark">M</span>
+            <span>MARCI <b>MOTOS</b></span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menú">Menu</button>
+        <nav class="main-nav" aria-label="Navegación principal">
+            <a href="#servicios">Servicios</a>
+            <a href="#taller">El taller</a>
+            <a href="#agenda">Turnos</a>
+            <a href="#contacto">Contacto</a>
         </nav>
+        <a class="header-cta" href="#agenda">Reservar turno <span aria-hidden="true">↗</span></a>
     </header>
 
     <main>
-        <!-- Sección Hero -->
-        <section id="inicio" class="hero">
-            <div class="hero-content">
-            <h1>Potencia tu moto con los mejores expertos</h1>
-            <p>Descubre servicios de alta calidad para mantener tu moto en óptimas condiciones. ¡Velocidad y precisión garantizadas!</p>
-
-            <div class="hero-button-container">
-                <img src="img/pexels-frans-van-heerden-201846-1022704.jpg" alt="Fondo del botón" class="button-bg">
-                <button class="hero-button">Agenda tu cita ahora</button>
+        <section class="hero" id="inicio">
+            <img class="hero-photo" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=2200&q=85" alt="Motocicleta preparada para salir a la ruta">
+            <div class="hero-shade"></div>
+            <div class="hero-copy">
+                <p class="eyebrow"><span></span> MECÁNICA · CUIDADO · CONFIANZA</p>
+                <h1>Tu moto.<br><em>En buenas manos.</em></h1>
+                <p class="hero-intro">Mantenimiento y reparación hechos con criterio, experiencia y atención a cada detalle.</p>
+                <a class="button button-primary" href="#agenda">Encontrar un turno <span aria-hidden="true">↗</span></a>
             </div>
-            </div>
-
-            <!-- Imagen de fondo (reemplaza con tu imagen o video) -->
-            <div class="hero-background"></div>
+            <div class="hero-caption"><span>CUIDADO PARA CADA RUTA</span><span>TALLER ESPECIALIZADO EN MOTOS</span></div>
+            <a class="scroll-cue" href="#servicios" aria-label="Ver servicios">↓</a>
         </section>
 
-        <!-- Sección Servicios -->
-        <section id="servicios" class="services">
-            <h2>Nuestros Servicios</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="service-icon">&#x2699;</i> <!-- Icono simple, puedes reemplazar con imágenes -->
-                    <h3>Mantenimiento General</h3>
-                    <p>Revisión completa de frenos, neumáticos y motor para asegurar un rendimiento óptimo.</p>
-                </div>
-                <div class="service-card">
-                    <i class="service-icon">&#x1F527;</i>
-                    <h3>Cambio de Aceite</h3>
-                    <p>Cambio de aceite y filtros con productos de alta calidad para prolongar la vida de tu motor.</p>
-                </div>
-                <div class="service-card">
-                    <i class="service-icon">&#x26A1;</i>
-                    <h3>Reparaciones Eléctricas</h3>
-                    <p>Diagnóstico y reparación de sistemas eléctricos, luces y encendido.</p>
-                </div>
-                <div class="service-card">
-                    <i class="service-icon">&#x1F3CD;</i>
-                    <h3>Personalización</h3>
-                    <p>Modificaciones estéticas y de rendimiento para hacer tu moto única.</p>
-                </div>
-                <div class="service-card">
-                    <i class="service-icon">&#x1F4B0;</i>
-                    <h3>Venta de Refacciones</h3>
-                    <p>Amplia selección de piezas originales y de repuesto al mejor precio.</p>
-                </div>
+        <section class="services section-wrap" id="servicios">
+            <div class="section-heading">
+                <div><p class="eyebrow eyebrow-dark">SERVICIO TÉCNICO · MARCI MOTOS</p><h2>Atención mecánica<br>pieza por pieza.</h2></div>
+                <p>Revisamos, explicamos y trabajamos sobre lo que tu moto realmente necesita. Elige un área o agenda una revisión.</p>
             </div>
-        </section>
-
-        <!-- Sección Productos -->
-        <section id="productos" class="products">
-            <h2>Nuestros Productos</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="product1.jpg" alt="Casco Deportivo"> <!-- Reemplaza con imágenes reales -->
-                    <h3>Casco Deportivo</h3>
-                    <p>Precio: $150</p>
-                </div>
-                <div class="product-card">
-                    <img src="product2.jpg" alt="Neumáticos Todo Terreno">
-                    <h3>Neumáticos Todo Terreno</h3>
-                    <p>Precio: $200</p>
-                </div>
-                <div class="product-card">
-                    <img src="product3.jpg" alt="Kit de Filtros">
-                    <h3>Kit de Filtros</h3>
-                    <p>Precio: $50</p>
-                </div>
-                <!-- Agrega más productos según necesites -->
+            <div class="service-grid">
+                <article class="service-item">
+                    <div class="service-card-head"><span class="service-number">01</span><span class="service-category">PREVENCIÓN</span></div>
+                    <h3>Mantenimiento general</h3>
+                    <p>Revisión periódica y puesta a punto de acuerdo con el uso de tu moto.</p>
+                    <ul class="service-points"><li>Inspección de componentes</li><li>Ajustes y controles</li></ul>
+                    <a class="service-arrow" href="#agenda" aria-label="Agendar mantenimiento general">↗</a>
+                </article>
+                <article class="service-item">
+                    <div class="service-card-head"><span class="service-number">02</span><span class="service-category">MOTOR</span></div>
+                    <h3>Aceite y filtros</h3>
+                    <p>Cuidado del motor y sus consumibles según las especificaciones de la moto.</p>
+                    <ul class="service-points"><li>Cambio de aceite</li><li>Reemplazo de filtros</li></ul>
+                    <a class="service-arrow" href="#agenda" aria-label="Agendar cambio de aceite y filtros">↗</a>
+                </article>
+                <article class="service-item">
+                    <div class="service-card-head"><span class="service-number">03</span><span class="service-category">CONTROL</span></div>
+                    <h3>Frenos y suspensión</h3>
+                    <p>Inspección de los sistemas que ayudan a mantener el control en marcha.</p>
+                    <ul class="service-points"><li>Pastillas y discos</li><li>Líquido y suspensión</li></ul>
+                    <a class="service-arrow" href="#agenda" aria-label="Agendar revisión de frenos y suspensión">↗</a>
+                </article>
+                <article class="service-item">
+                    <div class="service-card-head"><span class="service-number">04</span><span class="service-category">TRANSMISIÓN</span></div>
+                    <h3>Cadena y transmisión</h3>
+                    <p>Revisión del conjunto de transmisión para un funcionamiento adecuado.</p>
+                    <ul class="service-points"><li>Tensión y lubricación</li><li>Cadena y piñones</li></ul>
+                    <a class="service-arrow" href="#agenda" aria-label="Agendar revisión de cadena y transmisión">↗</a>
+                </article>
+                <article class="service-item">
+                    <div class="service-card-head"><span class="service-number">05</span><span class="service-category">ELÉCTRICO</span></div>
+                    <h3>Sistema eléctrico</h3>
+                    <p>Diagnóstico de los componentes eléctricos y de encendido de la moto.</p>
+                    <ul class="service-points"><li>Batería y carga</li><li>Luces y encendido</li></ul>
+                    <a class="service-arrow" href="#agenda" aria-label="Agendar diagnóstico eléctrico">↗</a>
+                </article>
+                <article class="service-item">
+                    <div class="service-card-head"><span class="service-number">06</span><span class="service-category">DIAGNÓSTICO</span></div>
+                    <h3>Revisión mecánica</h3>
+                    <p>Evaluación de ruidos, vibraciones o fallas para orientar la reparación.</p>
+                    <ul class="service-points"><li>Identificación de síntomas</li><li>Recomendación de trabajo</li></ul>
+                    <a class="service-arrow" href="#agenda" aria-label="Agendar diagnóstico mecánico">↗</a>
+                </article>
+            </div>
+            <div class="services-footer">
+                <p class="services-note">Taller mecánico especializado. No realizamos calibración de llantas ni despinche.</p>
+                <a class="services-booking-link" href="#agenda">¿No sabes qué necesita? Agenda un diagnóstico <span aria-hidden="true">↗</span></a>
             </div>
         </section>
 
-        <!-- Sección Agenda tu cita -->
-        <section id="agenda" class="agenda">
-            <h2>Agenda tu Cita</h2>
-            <form id="appointment-form">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" required>
-                
-                <label for="phone">Teléfono:</label>
-                <input type="tel" id="phone" required>
-                
-                <label for="service">Tipo de Servicio:</label>
-                <select id="service" required>
-                    <option value="">Selecciona un servicio</option>
-                    <option value="mantenimiento">Mantenimiento General</option>
-                    <option value="aceite">Cambio de Aceite</option>
-                    <option value="electrico">Reparaciones Eléctricas</option>
-                    <option value="personalizacion">Personalización</option>
-                    <option value="refacciones">Venta de Refacciones</option>
-                </select>
-                
-                <label for="date">Fecha:</label>
-                <input type="date" id="date" required>
-                
-                <label for="time">Hora:</label>
-                <input type="time" id="time" required>
-                
-                <button type="submit">Enviar</button>
-            </form>
+        <section class="workshop" id="taller">
+            <div class="workshop-image">
+                <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=85" alt="Motocicleta en un entorno industrial" loading="lazy">
+                <span class="image-stamp">MARCI<br>MOTOS</span>
+            </div>
+            <div class="workshop-copy">
+                <p class="eyebrow">NUESTRA FORMA DE TRABAJAR</p>
+                <h2>Primero escuchamos.<br>Después, revisamos.</h2>
+                <p class="workshop-intro">Un servicio claro empieza por entender qué le pasa a tu moto y explicarte cada paso.</p>
+                <div class="workshop-process" aria-label="Pasos de atención">
+                    <article class="process-step">
+                        <span class="process-number">01</span>
+                        <div><h3>Te escuchamos</h3><p>Cuéntanos qué notas y cuándo aparece el problema.</p></div>
+                    </article>
+                    <article class="process-step">
+                        <span class="process-number">02</span>
+                        <div><h3>Revisamos</h3><p>Inspeccionamos los sistemas relacionados con la falla.</p></div>
+                    </article>
+                    <article class="process-step">
+                        <span class="process-number">03</span>
+                        <div><h3>Acordamos el trabajo</h3><p>Te explicamos qué encontramos antes de iniciar la reparación.</p></div>
+                    </article>
+                </div>
+                <a class="text-link" href="#agenda">Agenda una revisión <span aria-hidden="true">↗</span></a>
+            </div>
         </section>
 
-        <!-- Sección Contacto -->
-        <section id="contacto" class="contact">
-            <h2>Contacto</h2>
-            <p><strong>Dirección:</strong> Calle Moto 123, Ciudad, País</p>
-            <p><strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00</p>
-            <p><strong>Teléfono:</strong> +123 456 789</p>
-            <p><strong>Redes Sociales:</strong> 
-                <a href="#">Facebook</a> | 
-                <a href="#">Instagram</a> | 
-                <a href="https://wa.me/123456789">WhatsApp</a>
-            </p>
-            <!-- Mapa de Google embebido (reemplaza con tu URL) -->
-            <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <section class="video-section" aria-labelledby="video-title">
+            <div class="video-heading"><p class="eyebrow">DESDE EL TALLER</p><h2 id="video-title">Manos a la obra.</h2></div>
+            <video controls preload="metadata" playsinline poster="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1800&q=80" aria-label="Video de trabajo en taller de motos">
+                <source src="https://videos.pexels.com/video-files/3015510/3015510-hd_1920_1080_24fps.mp4" type="video/mp4">
+                Tu navegador no puede reproducir este video.
+            </video>
+            <p class="video-note">Video de referencia. Reemplázalo por imágenes propias del taller antes de publicar.</p>
+        </section>
+
+        <section class="booking" id="agenda">
+            <div class="booking-intro">
+                <p class="eyebrow">RESERVA EN LÍNEA</p>
+                <h2>Tu próximo turno,<br><em>sin cruces.</em></h2>
+                <p>Elige un día y una hora disponible. Cada turno se reserva para una sola moto por hora.</p>
+                <div class="booking-legend"><span class="legend-dot"></span> Horarios disponibles <span class="legend-dot legend-busy"></span> Ya reservado</div>
+                <p class="booking-hours">Lunes a viernes · 09:00 a 18:00<br>Sábados · 09:00 a 15:00</p>
+            </div>
+            <div class="booking-panel">
+                <div class="calendar-top">
+                    <div><span class="calendar-label">DISPONIBILIDAD</span><h3 id="calendar-month" aria-live="polite"></h3></div>
+                    <div class="month-controls"><button type="button" id="previous-month" aria-label="Mes anterior">←</button><button type="button" id="next-month" aria-label="Mes siguiente">→</button></div>
+                </div>
+                <div class="calendar-grid calendar-weekdays" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+                <div class="calendar-grid" id="calendar-days" aria-label="Calendario de turnos"></div>
+                <div class="slot-area"><p class="slot-heading" id="slot-heading">Elige una fecha para ver los horarios</p><div class="slot-list" id="slot-list"></div></div>
+                <form class="booking-form" id="appointment-form">
+                    <input type="hidden" id="appointment-date" required>
+                    <input type="hidden" id="appointment-time" required>
+                    <label>Tu nombre<input id="name" name="name" autocomplete="name" required maxlength="80" placeholder="Nombre y apellido"></label>
+                    <label>Tu WhatsApp<input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="24" placeholder="Número con indicativo"></label>
+                    <label>¿Qué necesita tu moto?
+                        <select id="service" name="service" required>
+                            <option value="">Selecciona un servicio</option>
+                            <option value="Mantenimiento general">Mantenimiento preventivo</option>
+                            <option value="Cambio de aceite y filtros">Motor, aceite y filtros</option>
+                            <option value="Frenos y suspensión">Frenos y suspensión</option>
+                            <option value="Cadena y transmisión">Cadena y transmisión</option>
+                            <option value="Sistema eléctrico y encendido">Sistema eléctrico y encendido</option>
+                            <option value="Diagnóstico y revisión general">Diagnóstico mecánico</option>
+                            <option value="Otro servicio">Otro servicio</option>
+                        </select>
+                    </label>
+                    <label class="other-service-field" id="other-service-field" hidden>Describe el servicio
+                        <input id="service-detail" name="service-detail" maxlength="120" placeholder="Cuéntanos qué necesita tu moto">
+                    </label>
+                    <button class="button button-primary booking-submit" type="submit">Reservar y abrir WhatsApp <span aria-hidden="true">↗</span></button>
+                    <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contacto" aria-labelledby="contact-title">
+            <div class="contact-heading">
+                <div><p class="eyebrow">CONTACTO · MARCI MOTOS</p><h2 id="contact-title">Hablemos de tu moto.</h2></div>
+                <p>Estamos listos para ayudarte a encontrar el servicio y el turno adecuados.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-details">
+                    <article class="contact-detail">
+                        <span class="contact-index">01</span>
+                        <div><span class="contact-label">UBICACIÓN</span><h3>Visítanos en el taller</h3><p id="contact-address">Agrega la dirección del local para mostrar la ubicación.</p><a class="contact-map-link" id="maps-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Cómo llegar <span aria-hidden="true">↗</span></a></div>
+                    </article>
+                    <article class="contact-detail">
+                        <span class="contact-index">02</span>
+                        <div><span class="contact-label">LLAMADAS Y WHATSAPP</span><h3>Atención directa</h3><a class="contact-phone" id="contact-phone">Número empresarial por configurar</a><a class="contact-whatsapp-link" id="contact-whatsapp" hidden>Escríbenos por WhatsApp <span aria-hidden="true">↗</span></a></div>
+                    </article>
+                    <article class="contact-detail">
+                        <span class="contact-index">03</span>
+                        <div><span class="contact-label">HORARIO DE ATENCIÓN</span><h3>Te esperamos</h3><p>Lunes a viernes <b>09:00–18:00</b><br>Sábados <b>09:00–15:00</b></p></div>
+                    </article>
+                </div>
+                <div class="contact-map-panel">
+                    <div class="contact-map-heading"><div><span class="contact-label">ENCUÉNTRANOS</span><h3>Ubicación del taller</h3></div><span class="map-status">MARCI MOTOS</span></div>
+                    <iframe class="contact-map-embed" id="location-map" title="Mapa con la ubicación de Marci Motos" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
+                    <div class="map-placeholder" id="map-placeholder" role="status"><span class="map-placeholder-mark" aria-hidden="true">+</span><p>La ubicación aparecerá aquí<br>cuando configuremos la dirección del local.</p></div>
+                </div>
+            </div>
+            <div class="contact-faq" aria-labelledby="faq-title">
+                <div class="faq-heading"><p class="eyebrow">ANTES DE VENIR</p><h2 id="faq-title">Preguntas frecuentes.</h2></div>
+                <div class="faq-list">
+                    <details class="faq-item"><summary>¿Qué trabajos realizan?</summary><p>Hacemos mantenimiento general, cambio de aceite y filtros, revisión de frenos y suspensión, cadena y transmisión, sistema eléctrico y diagnóstico mecánico.</p></details>
+                    <details class="faq-item"><summary>¿Cómo puedo reservar un turno?</summary><p>Elige una fecha y una hora disponible en el calendario. Se reserva un solo turno por hora; puedes agendar otros trabajos ese mismo día en horarios diferentes.</p></details>
+                    <details class="faq-item"><summary>¿Atienden calibración de llantas o despinche?</summary><p>No. Marci Motos es un taller mecánico y no presta servicios de montallantas, calibración ni despinche.</p></details>
+                    <details class="faq-item"><summary>¿Qué hago si no sé cuál servicio elegir?</summary><p>Selecciona “Diagnóstico mecánico” o “Otro servicio” y cuéntanos qué notas. Revisamos el caso y acordamos el trabajo antes de iniciar.</p></details>
+                </div>
+            </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <img src="logo.png" alt="Logo del Taller" class="footer-logo"> <!-- Logo en el footer -->
-            <p>&copy; 2023 Taller de Motos. Todos los derechos reservados.</p>
-            <p>Correo: info@tallerdemotos.com</p>
-            <div class="footer-social">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="https://wa.me/123456789">WhatsApp</a>
-            </div>
-        </div>
-    </footer>
-
+    <footer><a class="brand footer-brand" href="#inicio"><span class="brand-mark">M</span><span>MARCI <b>MOTOS</b></span></a><span>© 2026 Marci Motos y Fixnovo. Todos los derechos reservados.</span><a href="#inicio">Volver arriba ↑</a></footer>
     <script src="Js/script.js"></script>
 </body>
 </html>
