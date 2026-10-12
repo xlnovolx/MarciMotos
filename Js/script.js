@@ -1,5 +1,6 @@
-const BUSINESS_WHATSAPP_NUMBER = '573156489484';
-const BUSINESS_ADDRESS = 'Calle 49 con Carrera 15, Colombia';
+const BUSINESS_WHATSAPP_NUMBER = '573102819958';
+const BUSINESS_ADDRESS = 'Tv. 33 #50 Sur-15, Colombia';
+const BUSINESS_CONTACT_NAME = 'Alejandro Paniza';
 const OPENING_HOUR = 9;
 const WEEKDAY_LAST_START_HOUR = 17;
 const SATURDAY_LAST_START_HOUR = 14;
@@ -256,6 +257,7 @@ form.addEventListener('submit', (event) => {
         const readableDate = new Intl.DateTimeFormat('es', { dateStyle: 'long' }).format(new Date(`${booking.date}T12:00:00`));
         const message = [
             'Nueva solicitud de turno - Marci Motos',
+            `Atención: ${BUSINESS_CONTACT_NAME}`,
             `Cliente: ${booking.name}`,
             `Teléfono: ${booking.phone}`,
             `Servicio: ${serviceName}`,
