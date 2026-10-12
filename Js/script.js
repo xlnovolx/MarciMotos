@@ -1,5 +1,5 @@
 const BUSINESS_WHATSAPP_NUMBER = '573102819958';
-const BUSINESS_ADDRESS = 'Tv. 33 #50 Sur-15, Colombia';
+const BUSINESS_ADDRESS = 'Tv. 33 #50sur-15, Bogotá';
 const BUSINESS_CONTACT_NAME = 'Alejandro Paniza';
 const OPENING_HOUR = 9;
 const WEEKDAY_LAST_START_HOUR = 17;
