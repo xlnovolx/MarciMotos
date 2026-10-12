@@ -3,10 +3,7 @@ const BUSINESS_ADDRESS = 'Calle 49 con Carrera 15, Colombia';
 const OPENING_HOUR = 9;
 const WEEKDAY_LAST_START_HOUR = 17;
 const SATURDAY_LAST_START_HOUR = 14;
-const configuredApiUrl = document.querySelector('meta[name="marci-api-url"]')?.content.trim();
-const APPOINTMENT_API = configuredApiUrl
-    ? `${configuredApiUrl.replace(/\/$/, '')}/api/appointments`
-    : '/api/appointments';
+const APPOINTMENTS_STORAGE_KEY = 'marcimotos-appointments-v1';
 
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
@@ -28,8 +25,15 @@ const now = new Date();
 let displayedMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 let selectedDate = '';
 let occupiedSlots = new Set();
-let monthRequestId = 0;
 const hasBusinessWhatsApp = /^\d{10,15}$/.test(BUSINESS_WHATSAPP_NUMBER);
+
+function readSavedAppointments() {
+    const storedAppointments = localStorage.getItem(APPOINTMENTS_STORAGE_KEY);
+    if (!storedAppointments) return [];
+    const appointments = JSON.parse(storedAppointments);
+    if (!Array.isArray(appointments)) throw new Error('La agenda local no tiene un formato válido.');
+    return appointments;
+}
 
 function updateServiceDetailField() {
     const needsDetails = serviceSelect.value === 'Otro servicio';
@@ -99,8 +103,7 @@ function lastStartHourForDate(date) {
     return date.getDay() === 6 ? SATURDAY_LAST_START_HOUR : WEEKDAY_LAST_START_HOUR;
 }
 
-async function loadMonth() {
-    const requestId = ++monthRequestId;
+function loadMonth() {
     const monthKey = `${displayedMonth.getFullYear()}-${String(displayedMonth.getMonth() + 1).padStart(2, '0')}`;
     monthLabel.textContent = new Intl.DateTimeFormat('es', { month: 'long', year: 'numeric' }).format(displayedMonth);
     calendarDays.replaceChildren();
@@ -111,24 +114,20 @@ async function loadMonth() {
     slotHeading.textContent = 'Elige una fecha para ver los horarios';
 
     try {
-        const response = await fetch(`${APPOINTMENT_API}?month=${monthKey}`, { cache: 'no-store' });
-        if (!response.headers.get('content-type')?.includes('application/json')) {
-            throw new Error('Este enlace está publicado como sitio estático y no encuentra la API de turnos. Publica el servidor de agenda y configura su URL en el meta marci-api-url de index.html.');
-        }
-        if (!response.ok) throw new Error('No se pudo consultar la agenda del servidor.');
-        const appointments = await response.json();
-        if (requestId !== monthRequestId) return;
+        const appointments = readSavedAppointments().filter((appointment) => appointment.date.startsWith(monthKey));
         occupiedSlots = new Set(appointments.map(({ date, time }) => `${date}T${time}`));
         renderCalendar();
-    } catch (error) {
-        if (requestId === monthRequestId) {
-            const errorMessage = document.createElement('p');
-            errorMessage.className = 'calendar-error';
-            errorMessage.textContent = error.message || 'No se pudo cargar la agenda. Comprueba la conexión con el servidor de turnos.';
-            calendarDays.replaceChildren(errorMessage);
-        }
+    } catch {
+        const errorMessage = document.createElement('p');
+        errorMessage.className = 'calendar-error';
+        errorMessage.textContent = 'No se pudo leer la agenda guardada en este navegador. Revisa que el almacenamiento esté permitido.';
+        calendarDays.replaceChildren(errorMessage);
     }
 }
+
+window.addEventListener('storage', (event) => {
+    if (event.key === APPOINTMENTS_STORAGE_KEY) loadMonth();
+});
 
 function renderCalendar() {
     const year = displayedMonth.getFullYear();
@@ -214,7 +213,7 @@ nextMonth.addEventListener('click', () => {
     loadMonth();
 });
 
-form.addEventListener('submit', async (event) => {
+form.addEventListener('submit', (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
     if (!appointmentDate.value || !appointmentTime.value) {
@@ -237,28 +236,26 @@ form.addEventListener('submit', async (event) => {
     formMessage.textContent = 'Guardando tu turno...';
 
     try {
-        const response = await fetch(APPOINTMENT_API, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(booking),
-        });
-        const result = await response.json();
-        if (response.status === 409) {
+        const appointments = readSavedAppointments();
+        const appointmentKey = `${booking.date}T${booking.time}`;
+        if (appointments.some((appointment) => `${appointment.date}T${appointment.time}` === appointmentKey)) {
             if (whatsappTab) whatsappTab.close();
-            formMessage.textContent = 'Ese horario se acaba de reservar. Elige otro turno disponible.';
-            await loadMonth();
+            formMessage.textContent = 'Ese horario ya está reservado en este navegador. Elige otro turno disponible.';
+            occupiedSlots.add(appointmentKey);
+            renderCalendar();
+            renderSlots();
             return;
         }
-        if (!response.ok) throw new Error(result.error || 'No se pudo guardar el turno.');
-
-        occupiedSlots.add(`${booking.date}T${booking.time}`);
-        renderCalendar();
         const serviceName = booking.service === 'Otro servicio'
             ? `${booking.service}: ${booking.service_detail}`
             : booking.service;
+        appointments.push({ date: booking.date, time: booking.time, service: serviceName });
+        localStorage.setItem(APPOINTMENTS_STORAGE_KEY, JSON.stringify(appointments));
+        occupiedSlots.add(appointmentKey);
+        renderCalendar();
         const readableDate = new Intl.DateTimeFormat('es', { dateStyle: 'long' }).format(new Date(`${booking.date}T12:00:00`));
         const message = [
-            'Nueva reserva de turno - Marci Motos',
+            'Nueva solicitud de turno - Marci Motos',
             `Cliente: ${booking.name}`,
             `Teléfono: ${booking.phone}`,
             `Servicio: ${serviceName}`,
@@ -279,10 +276,8 @@ form.addEventListener('submit', async (event) => {
             link.href = whatsappUrl;
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
-            link.textContent = 'Abrir WhatsApp y enviar la reserva ↗';
-            const whatsappStatus = whatsappTab
-                ? 'Turno reservado. Revisa los datos en WhatsApp y pulsa Enviar. '
-                : 'Turno reservado. Abre WhatsApp para enviar los datos al taller. ';
+            link.textContent = 'Abrir WhatsApp y enviar solicitud ↗';
+            const whatsappStatus = 'Solicitud guardada en este navegador. Envía el mensaje y espera la confirmación del taller. ';
             formMessage.replaceChildren(document.createTextNode(whatsappStatus), link);
         } else {
             formMessage.textContent = 'Turno reservado. Configura el número empresarial en Js/script.js para enviar la reserva por WhatsApp.';
@@ -294,7 +289,9 @@ form.addEventListener('submit', async (event) => {
         updateServiceDetailField();
     } catch (error) {
         if (whatsappTab) whatsappTab.close();
-        formMessage.textContent = error.message;
+        formMessage.textContent = error instanceof DOMException && error.name === 'QuotaExceededError'
+            ? 'No hay espacio disponible para guardar el turno en este navegador.'
+            : 'No se pudo guardar el turno. Revisa que el almacenamiento del navegador esté permitido.';
     } finally {
         submitButton.disabled = false;
     }
